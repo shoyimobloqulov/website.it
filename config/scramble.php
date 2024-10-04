@@ -13,7 +13,7 @@ return [
      * Your API domain. By default, app domain is used. This is also a part of the default API routes
      * matcher, so when implementing your own, make sure you use this config if needed.
      */
-    'api_domain' => null,
+    'api_domain' => env('APP_URL'),
 
     /*
      * The path where your OpenAPI specification will be exported.
@@ -27,9 +27,9 @@ return [
         'version' => env('API_VERSION', '0.0.1'),
 
         /*
-         * Description rendered on the home page of the API documentation (`/docs/api`).
+         * Description rendered on the home page o  f the API documentation (`/docs/api`).
          */
-        'description' => '',
+        'description' => 'SamPC.uz Samarqand davlat universiteti tomonidan ishlab chiqilgan olimpiadalar o\'tqazish sayti.',
     ],
 
     /*
@@ -39,7 +39,7 @@ return [
         /*
          * Define the title of the documentation's website. App name is used when this config is `null`.
          */
-        'title' => null,
+        'title' => env("APP_NAME"),
 
         /*
          * Define the theme of the documentation. Available options are `light` and `dark`.
@@ -54,7 +54,7 @@ return [
         /*
          * URL to an image that displays as a small square logo next to the title, above the table of contents.
          */
-        'logo' => '',
+        'logo' => "https://www.samdu.uz/new/images/SamDU%20logo%20full%201.png",
 
         /*
          * Use to fetch the credential policy for the Try It feature. Options are: omit, include (default), and same-origin
@@ -76,7 +76,10 @@ return [
      * ],
      * ```
      */
-    'servers' => null,
+    'servers' => [
+        'Live' => 'api',
+        'Prod' => env('APP_URL')
+    ],
 
     'middleware' => [
         'web',

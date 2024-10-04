@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController as BaseController;
 use App\Models\User;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\JsonResponse;
@@ -13,7 +12,7 @@ use Illuminate\Http\JsonResponse;
 class RegisterController extends BaseController
 {
     /**
-     * Register api
+     * Register
      *
      * @param Request $request
      * @return JsonResponse
@@ -38,7 +37,7 @@ class RegisterController extends BaseController
     }
 
     /**
-     * Login api
+     * Login
      *
      * @param Request $request
      * @return JsonResponse
@@ -56,7 +55,7 @@ class RegisterController extends BaseController
     }
 
     /**
-     * Logout api
+     * Logout
      *
      * @param Request $request
      * @return JsonResponse

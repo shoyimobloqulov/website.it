@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\BaseController as BaseController;
 use App\Models\TaskInputOutput;
 use App\Models\Tasks;
-use Illuminate\Console\View\Components\Task;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,6 +12,11 @@ use Illuminate\Support\Str;
 
 class TasksController extends BaseController
 {
+    public function tasks(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    {
+        $tasks = Tasks::all();
+        return view('tasks',compact('tasks'));
+    }
     /**
      * List
      * @param  array

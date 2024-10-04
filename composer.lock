@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "83e71b203bb03be430ad775b78d2759c",
+    "content-hash": "c001b98000735724caed3cdcd24bb65b",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -1188,6 +1188,80 @@
                 "source": "https://github.com/filamentphp/filament"
             },
             "time": "2024-05-13T12:47:29+00:00"
+        },
+        {
+            "name": "flugger/laravel-responder",
+            "version": "v3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/flugg/laravel-responder.git",
+                "reference": "726f71ff5ef87b9f4be461389d0e560b473811bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flugg/laravel-responder/zipball/726f71ff5ef87b9f4be461389d0e560b473811bf",
+                "reference": "726f71ff5ef87b9f4be461389d0e560b473811bf",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^5.1|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
+                "illuminate/support": "^5.1|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
+                "league/fractal": "^0.19.0|^0.20",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^2.5|^3.5",
+                "illuminate/database": "^5.1|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
+                "mockery/mockery": "^0.9.5|^1.0",
+                "orchestra/testbench": "^4.0|^5.0|^6.0|^7.0|^8.0|^9.0",
+                "phpunit/phpunit": "^8.5|^9.0|^10.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Flugg\\Responder\\ResponderServiceProvider"
+                    ],
+                    "aliases": {
+                        "Responder": "Flugg\\Responder\\Facades\\Responder",
+                        "Transformer": "Flugg\\Responder\\Facades\\Transformer"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Flugg\\Responder\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Tømmerås",
+                    "email": "flugged@gmail.com"
+                }
+            ],
+            "description": "A Laravel Fractal package for building API responses, giving you the power of Fractal and the elegancy of Laravel.",
+            "homepage": "https://github.com/flugger/laravel-responder",
+            "keywords": [
+                "api",
+                "fractal",
+                "laravel",
+                "lumen",
+                "responder",
+                "response",
+                "transformer"
+            ],
+            "support": {
+                "issues": "https://github.com/flugg/laravel-responder/issues",
+                "source": "https://github.com/flugg/laravel-responder/tree/v3.4.0"
+            },
+            "time": "2024-03-04T18:09:55+00:00"
         },
         {
             "name": "fruitcake/php-cors",
@@ -2512,6 +2586,76 @@
             "time": "2024-05-06T20:05:52+00:00"
         },
         {
+            "name": "league/fractal",
+            "version": "0.20.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/fractal.git",
+                "reference": "8b9d39b67624db9195c06f9c1ffd0355151eaf62"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/fractal/zipball/8b9d39b67624db9195c06f9c1ffd0355151eaf62",
+                "reference": "8b9d39b67624db9195c06f9c1ffd0355151eaf62",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "doctrine/orm": "^2.5",
+                "illuminate/contracts": "~5.0",
+                "mockery/mockery": "^1.3",
+                "pagerfanta/pagerfanta": "~1.0.0",
+                "phpstan/phpstan": "^1.4",
+                "phpunit/phpunit": "^9.5",
+                "squizlabs/php_codesniffer": "~3.4",
+                "vimeo/psalm": "^4.22",
+                "zendframework/zend-paginator": "~2.3"
+            },
+            "suggest": {
+                "illuminate/pagination": "The Illuminate Pagination component.",
+                "pagerfanta/pagerfanta": "Pagerfanta Paginator",
+                "zendframework/zend-paginator": "Zend Framework Paginator"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.20.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Fractal\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Phil Sturgeon",
+                    "email": "me@philsturgeon.uk",
+                    "homepage": "http://philsturgeon.uk/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Handle the output of complex data structures ready for API output.",
+            "homepage": "http://fractal.thephpleague.com/",
+            "keywords": [
+                "api",
+                "json",
+                "league",
+                "rest"
+            ],
+            "support": {
+                "issues": "https://github.com/thephpleague/fractal/issues",
+                "source": "https://github.com/thephpleague/fractal/tree/0.20.1"
+            },
+            "time": "2022-04-11T12:47:17+00:00"
+        },
+        {
             "name": "league/mime-type-detection",
             "version": "1.16.0",
             "source": {
@@ -2636,6 +2780,60 @@
             },
             "abandoned": "league/uri-interfaces",
             "time": "2018-11-22T07:55:51+00:00"
+        },
+        {
+            "name": "lightit/scramble-extensions",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Light-it-labs/scramble-extensions.git",
+                "reference": "4a28899eadda07237908f245d76a94084a3fc03f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Light-it-labs/scramble-extensions/zipball/4a28899eadda07237908f245d76a94084a3fc03f",
+                "reference": "4a28899eadda07237908f245d76a94084a3fc03f",
+                "shasum": ""
+            },
+            "require": {
+                "dedoc/scramble": "^0.11",
+                "flugger/laravel-responder": "^3.3",
+                "illuminate/contracts": "^10.0|^11.0",
+                "league/fractal": "^0.20.1",
+                "nikic/php-parser": "^5.0",
+                "php": "^8.1",
+                "phpstan/phpdoc-parser": "^1.0",
+                "spatie/laravel-package-tools": "^1.9.2"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^3.4|^4.0",
+                "laravel/pint": "^v1.1.0",
+                "nunomaduro/collision": "^v8.0",
+                "orchestra/testbench": "^8.0|^9.0",
+                "pestphp/pest": "^3.0",
+                "pestphp/pest-plugin-laravel": "^3.0",
+                "phpunit/phpunit": "^11.0",
+                "spatie/pest-plugin-snapshots": "^2.2"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LightIt\\ScrambleExtensions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Agustin Fernandez",
+                    "email": "agustin.fernandez@lightit.io"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/Light-it-labs/scramble-extensions/issues",
+                "source": "https://github.com/Light-it-labs/scramble-extensions/tree/1.2.0"
+            },
+            "time": "2024-09-20T18:10:11+00:00"
         },
         {
             "name": "livewire/livewire",
@@ -9311,7 +9509,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "lightit/scramble-extensions": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
