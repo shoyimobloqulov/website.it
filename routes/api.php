@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CodeTestingController;
 use App\Http\Controllers\Api\CompilerController;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\TasksController;
@@ -20,11 +21,15 @@ Route::resource('task', TasksController::class, [
 ])->middleware('auth:sanctum');
 
 // Compiler
-Route::get('/runtimes', [CompilerController::class, 'getRuntimes']);
-Route::post('/execute', [CompilerController::class, 'executeCode']);
-Route::get('/packages', [CompilerController::class, 'getPackages']);
-Route::post('/packages', [CompilerController::class, 'installPackage']);
-Route::delete('/packages', [CompilerController::class, 'deletePackage']);
+Route::get('/runtimes', [CompilerController::class, 'getRuntimes'])->middleware('auth:sanctum');
+Route::post('/execute', [CompilerController::class, 'executeCode'])->middleware('auth:sanctum');
+Route::get('/packages', [CompilerController::class, 'getPackages'])->middleware('auth:sanctum');
+Route::post('/packages', [CompilerController::class, 'installPackage'])->middleware('auth:sanctum');
+Route::delete('/packages', [CompilerController::class, 'deletePackage'])->middleware('auth:sanctum');
+
+// Execute
+Route::post('/execution-results', [CodeTestingController::class, 'storeExecutionResult'])->middleware('auth:sanctum');
+
 
 // Tasks Tests
 Route::post('/task/{task_id}/tests',[TasksController::class,'storeTestFile'])->middleware('auth:sanctum');
