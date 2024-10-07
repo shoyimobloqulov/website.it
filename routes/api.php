@@ -15,7 +15,7 @@ Route::post('/logout', [RegisterController::class, 'logout'])->middleware('auth:
 
 //Tasks
 Route::resource('task', TasksController::class, [
-    'only' => ['index', 'store', 'show', 'update', 'destroy']
+    'only' => ['index', 'store', 'show', 'update', 'destroy','storeTestFile']
 ])->middleware('auth:sanctum');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

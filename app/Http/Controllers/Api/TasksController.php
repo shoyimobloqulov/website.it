@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Api\BaseController as BaseController;
 use App\Models\TaskInputOutput;
 use App\Models\Tasks;
+use App\Models\Test;
+use App\Models\TestInputOutput;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -143,4 +146,64 @@ class TasksController extends BaseController
         }
         return $this->sendError("Bunday masala saqlanmagan");
     }
+
+    /**
+     * Tasks test file store
+     *
+     * @param Request $request
+     * @param int $taskId
+     * @throws Exception
+     */
+    public function storeTestFile(Request $request, int $taskId)
+    {
+        $file = $request->file('test_file');
+        $filePath = $file->store('tests');
+
+        $test = Test::create([
+            'task_id' => $taskId,
+            'file_path' => $filePath
+        ]);
+
+        $this->processTestFile($test, $filePath);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function processTestFile(Test $test, $filePath)
+    {
+        $zip = new \ZipArchive;
+        if ($zip->open(storage_path('app/' . $filePath)) === TRUE) {
+            $extractPath = storage_path('app/tests/'.$test->id);
+            $zip->extractTo($extractPath);
+            $zip->close();
+
+            $inputFiles = glob($extractPath . '/*.in');
+            $outputFiles = glob($extractPath . '/*.out');
+
+            $inputs = [];
+            $outputs = [];
+
+            foreach ($inputFiles as $inputFile) {
+                $testName = pathinfo($inputFile, PATHINFO_FILENAME);
+                $outputFile = $extractPath . '/' . $testName . '.out';
+
+                if (!file_exists($outputFile)) {
+                    throw new Exception("Matching output file for {$testName}.in is missing");
+                }
+
+                $inputContent = file_get_contents($inputFile);
+                $outputContent = file_get_contents($outputFile);
+
+                TestInputOutput::create([
+                    'test_id' => $test->id,
+                    'input' => trim($inputContent),
+                    'output' => trim($outputContent)
+                ]);
+            }
+        } else {
+            throw new Exception('Failed to open the zip file.');
+        }
+    }
+
 }
