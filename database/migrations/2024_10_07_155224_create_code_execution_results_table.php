@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('code_execution_results', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
             $table->string('language');
             $table->string('version');
             $table->text('code');
@@ -22,8 +21,8 @@ return new class extends Migration
             $table->integer('execution_time')->nullable();
             $table->integer('memory_used')->nullable();
             $table->integer('code_length')->nullable()->after('code');
-            $table->foreignId('task_id')->nullable()->constrained('tasks')->onDelete('cascade'); // Task ID
-
+            $table->foreignId('task_id')->constrained('tasks')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
