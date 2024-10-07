@@ -13,10 +13,15 @@ Route::controller(RegisterController::class)->group(function () {
 
 Route::post('/logout', [RegisterController::class, 'logout'])->middleware('auth:sanctum');
 
-//Tasks
+// Tasks
 Route::resource('task', TasksController::class, [
-    'only' => ['index', 'store', 'show', 'update', 'destroy','storeTestFile']
+    'only' => ['index', 'store', 'show', 'update', 'destroy']
 ])->middleware('auth:sanctum');
+
+// Tasks Tests
+Route::post('/task/{task_id}/tests',[TasksController::class,'storeTestFile'])->middleware('auth:sanctum');
+Route::put('/task/{task_id}/tests',[TasksController::class,'updateTestFile'])->middleware('auth:sanctum');
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

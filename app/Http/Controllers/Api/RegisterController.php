@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 class RegisterController extends BaseController
 {
     /**
-     * Register
+     * get User Details
      *
      * @param Request $request
      * @return JsonResponse
@@ -25,7 +25,7 @@ class RegisterController extends BaseController
     }
 
     /**
-     * Login
+     * Register
      *
      * @param Request $request
      * @return JsonResponse
@@ -51,7 +51,7 @@ class RegisterController extends BaseController
     }
 
     /**
-     * Logout
+     * Login
      *
      * @param Request $request
      * @return JsonResponse

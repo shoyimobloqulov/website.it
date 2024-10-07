@@ -10,6 +10,7 @@ use App\Models\TestInputOutput;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class TasksController extends BaseController
@@ -151,20 +152,50 @@ class TasksController extends BaseController
      * Tasks test file store
      *
      * @param Request $request
-     * @param int $taskId
+     * @param int $task_id
      * @throws Exception
      */
-    public function storeTestFile(Request $request, int $taskId)
+    public function storeTestFile(Request $request, int $task_id)
     {
+        $request->validate([
+            'test_file' => 'required|mimes:zip',
+        ]);
+
         $file = $request->file('test_file');
         $filePath = $file->store('tests');
 
         $test = Test::create([
-            'task_id' => $taskId,
+            'task_id' => $task_id,
             'file_path' => $filePath
         ]);
 
         $this->processTestFile($test, $filePath);
+    }
+
+    /**
+     * Tasks test file update
+     *
+     * @param Request $request
+     * @param int $task_id
+     * @throws Exception
+     */
+    public function updateTestFile(Request $request, int $task_id)
+    {
+        $test = Test::where('task_id',$task_id)->first();
+
+        $file = $request->file('test_file');
+        $newFilePath = $file->store('tests');
+
+        if (Storage::exists($test->file_path)) {
+            Storage::delete($test->file_path);
+        }
+        $test->update([
+            'file_path' => $newFilePath,
+        ]);
+
+        TestInputOutput::where('test_id', $test->id)->delete();
+
+        $this->processTestFile($test, $newFilePath);
     }
 
     /**
