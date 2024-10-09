@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 class RegisterController extends BaseController
 {
     /**
-     * get User Details
+     * Get User Details
      *
      * @param Request $request
      * @return JsonResponse
@@ -21,7 +21,10 @@ class RegisterController extends BaseController
     public function getUserDetails(Request $request): JsonResponse
     {
         $user = $request->user();
-        return response()->json(['user' => $user], 200);
+        return response()->json([
+            'status' => true,
+            'user' => $user
+        ], 200);
     }
 
     /**

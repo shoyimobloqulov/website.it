@@ -36,6 +36,4 @@ Route::post('/task/{task_id}/tests',[TasksController::class,'storeTestFile'])->m
 Route::put('/task/{task_id}/tests',[TasksController::class,'updateTestFile'])->middleware('auth:sanctum');
 
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('auth:sanctum')->get('/user', [RegisterController::class,'getUserDetails']);
