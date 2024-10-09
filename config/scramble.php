@@ -78,7 +78,7 @@ return [
      */
     'servers' => [
         'Live' => 'api',
-        'Prod' => env('APP_URL')
+        'Prod' => "http://contest.sampc.uz/api"
     ],
 
     'middleware' => [

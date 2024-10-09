@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Controllers\Api\BaseController as BaseController;
+use App\Http\Controllers\Api\V1\BaseController as BaseController;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use function bcrypt;
+use function response;
 
 
 class RegisterController extends BaseController

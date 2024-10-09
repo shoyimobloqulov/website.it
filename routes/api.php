@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\Api\CodeTestingController;
-use App\Http\Controllers\Api\CompilerController;
-use App\Http\Controllers\Api\RegisterController;
-use App\Http\Controllers\Api\TasksController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\V1\CodeTestingController;
+use App\Http\Controllers\Api\V1\CompilerController;
+use App\Http\Controllers\Api\V1\RegisterController;
+use App\Http\Controllers\Api\V1\TasksController;
 use Illuminate\Support\Facades\Route;
 
 // Auth Api

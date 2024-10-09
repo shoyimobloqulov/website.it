@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\CodeExecutionResult;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use function response;
 
 class CodeTestingController extends Controller
 {
@@ -20,8 +21,8 @@ class CodeTestingController extends Controller
     {
         // Validatsiya
         $request->validate([
-            'user_id' => 'required|string',
-            'task_id' => 'required|integer', // Task ID majburiy
+            'user_id' => 'required|exists:users,id',
+            'task_id' => 'required|exists:tasks,id',
             'language' => 'required|string',
             'version' => 'required|string',
             'code' => 'required|string',
