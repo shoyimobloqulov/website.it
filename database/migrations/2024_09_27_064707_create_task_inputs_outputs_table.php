@@ -17,6 +17,8 @@ return new class extends Migration {
             $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
             $table->text('input')->nullable();
             $table->text('output')->nullable();
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

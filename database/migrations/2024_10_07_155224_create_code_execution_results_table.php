@@ -20,9 +20,10 @@ return new class extends Migration
             $table->text('error')->nullable();
             $table->integer('execution_time')->nullable();
             $table->integer('memory_used')->nullable();
-            $table->integer('code_length')->nullable()->after('code');
+            $table->integer('code_length')->nullable()->default(0);
             $table->foreignId('task_id')->constrained('tasks')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

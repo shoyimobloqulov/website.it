@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('test_id')->constrained()->onDelete('cascade');
             $table->text('input');
             $table->text('output');
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

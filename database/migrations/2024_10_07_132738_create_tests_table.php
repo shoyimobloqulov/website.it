@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('task_id')->constrained()->onDelete('cascade');
             $table->string('file_path');
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }
